@@ -4,7 +4,7 @@ import WeekDays from './WeekDays'
 
 const CentralView = () => {
   return (
-    <div className='w-full h-screen'>
+    <div className='w-full h-screen p-14'>
       <Header />
       <WeekDays />
       <TodaysHighlights />
