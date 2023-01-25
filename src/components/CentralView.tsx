@@ -2,10 +2,18 @@ import Header from './Header'
 import TodaysHighlights from './TodaysHighlights'
 import WeekDays from './WeekDays'
 
-const CentralView = () => {
+interface Props {
+  unit: 'metric' | 'imperial'
+  setUnit: React.Dispatch<React.SetStateAction<'metric' | 'imperial'>>
+}
+
+const CentralView = ({ unit, setUnit }: Props) => {
   return (
     <div className='w-full h-screen p-14'>
-      <Header />
+      <Header
+        unit={unit}
+        setUnit={setUnit}
+      />
       <WeekDays />
       <TodaysHighlights />
     </div>
