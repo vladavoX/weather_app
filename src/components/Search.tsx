@@ -1,14 +1,28 @@
 import { AiOutlineSearch, AiOutlineCloseCircle } from 'react-icons/ai'
 
-const Search = () => {
+interface Props {
+  location: string
+  setLocation: React.Dispatch<React.SetStateAction<string>>
+  fetchWeather: () => Promise<void>
+}
+
+const Search = ({ location, setLocation, fetchWeather }: Props) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    fetchWeather()
+    setLocation('')
+  }
+
   return (
     <div className='flex items-center gap-4 bg-gray-100 p-2 rounded-md'>
       <AiOutlineSearch />
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           placeholder='Search for places...'
           className='focus:outline-none placeholder-black bg-gray-100'
+          onChange={(e) => setLocation(e.target.value)}
+          value={location}
         />
       </form>
       <AiOutlineCloseCircle className='cursor-pointer' />
