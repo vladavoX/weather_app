@@ -25,6 +25,7 @@ function App() {
   }, [location])
 
   useEffect(() => {
+    if (saveLocation === '') return
     fetchWeather()
   }, [unit])
 

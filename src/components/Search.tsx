@@ -14,7 +14,7 @@ const Search = ({ location, setLocation, fetchWeather }: Props) => {
   }
 
   return (
-    <div className='flex items-center gap-4 bg-gray-100 p-2 rounded-md'>
+    <div className='flex items-center gap-4 bg-gray-100 py-3 px-4 rounded-md'>
       <AiOutlineSearch />
       <form onSubmit={handleSubmit}>
         <input
@@ -25,7 +25,10 @@ const Search = ({ location, setLocation, fetchWeather }: Props) => {
           value={location}
         />
       </form>
-      <AiOutlineCloseCircle className='cursor-pointer' />
+      <AiOutlineCloseCircle
+        className='cursor-pointer'
+        onClick={() => setLocation('')}
+      />
     </div>
   )
 }

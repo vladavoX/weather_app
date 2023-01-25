@@ -12,16 +12,20 @@ const Header = ({ unit, setUnit }: Props) => {
       <div className='flex gap-4'>
         <button
           className={`w-14 h-14 flex items-center justify-center ${
-            unit === 'metric' ? 'bg-amber-200 text-gray-900' : 'bg-gray-400'
-          } text-gray-100 rounded-full shadow-black shadow-md`}
+            unit === 'metric'
+              ? 'bg-gray-50 text-gray-900'
+              : 'bg-gray-900 text-gray-50'
+          } rounded-full`}
           onClick={() => setUnit('metric')}
         >
           <RiCelsiusFill />
         </button>
         <button
           className={`w-14 h-14 flex items-center justify-center ${
-            unit === 'imperial' ? 'bg-amber-200 text-gray-900' : 'bg-gray-400'
-          } text-gray-100 rounded-full shadow-black shadow-md`}
+            unit === 'imperial'
+              ? 'bg-gray-50 text-gray-900'
+              : 'bg-gray-900 text-gray-50'
+          } rounded-full`}
           onClick={() => setUnit('imperial')}
         >
           <RiFahrenheitFill />
