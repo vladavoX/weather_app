@@ -5,16 +5,21 @@ import WeekDays from './WeekDays'
 interface Props {
   unit: 'metric' | 'imperial'
   setUnit: React.Dispatch<React.SetStateAction<'metric' | 'imperial'>>
+  weather: any
+  setWeather: React.Dispatch<React.SetStateAction<any>>
 }
 
-const CentralView = ({ unit, setUnit }: Props) => {
+const CentralView = ({ unit, setUnit, weather, setWeather }: Props) => {
   return (
     <div className='w-full h-screen p-14 flex flex-col gap-12'>
       <Header
         unit={unit}
         setUnit={setUnit}
       />
-      <WeekDays />
+      <WeekDays
+        weather={weather}
+        setWeather={setWeather}
+      />
       <TodaysHighlights />
     </div>
   )

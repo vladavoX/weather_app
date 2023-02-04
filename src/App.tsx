@@ -39,6 +39,8 @@ function App() {
       <CentralView
         unit={unit}
         setUnit={setUnit}
+        weather={weather}
+        setWeather={setWeather}
       />
     </div>
   )
