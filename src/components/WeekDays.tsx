@@ -7,54 +7,51 @@ interface Props {
 }
 
 const WeekDays = ({ weather, setWeather }: Props) => {
-  const [grouped, setGrouped] = useState({})
-  const [averageTemp, setAverageTemp] = useState<string[]>([])
+  const [newWeather, setNewWeather] = useState([])
+  const [grouped, setGrouped] = useState([])
 
-  const removeTimeFromDate = (weather: any) => {
-    weather.list.forEach((day: any) => {
-      day.dt_txt = day.dt_txt.split(' ')[0]
+  const dateFormatAndGroup = (newWeather: any) => {
+    newWeather.list.map((day: any) => {
+      const date = day.dt_txt.split(' ')
+      const dayOfWeek = new Date(date[0]).toLocaleString('en-us', {
+        weekday: 'short',
+      })
+      day.dt_txt = dayOfWeek
     })
-    setWeather(weather)
-  }
 
-  const groupByDate = (weather: any) => {
-    const grouped = weather.list.reduce((acc: any, day: any) => {
-      const date = day.dt_txt
-      if (!acc[date]) {
-        acc[date] = []
-      }
-      acc[date].push(day)
-      return acc
+    let grouped = newWeather.list.reduce((r: any, a: any) => {
+      r[a.dt_txt] = [...(r[a.dt_txt] || []), a]
+      return r
     }, {})
-    return grouped
-  }
 
-  const getAverageTemp = (grouped: any) => {
-    const averageTemp = Object.keys(grouped).map((date) => {
-      const temps = grouped[date].map((day: any) => day.main.temp)
-      const average = temps.reduce((a: any, b: any) => a + b) / temps.length
-      return average.toFixed(0)
-    })
-    return averageTemp
+    for (const key in grouped) {
+      grouped[key] = grouped[key].map((day: any) => day.main.temp)
+      grouped[key] = (
+        grouped[key].reduce((a: any, b: any) => a + b) / 7
+      ).toFixed(0)
+    }
+    setGrouped(grouped)
   }
 
   useEffect(() => {
     if (weather) {
-      removeTimeFromDate(weather)
-      setGrouped(groupByDate(weather))
+      setNewWeather(weather)
     }
   }, [weather])
 
   useEffect(() => {
-    setAverageTemp(getAverageTemp(grouped))
-  }, [grouped])
+    if (newWeather.length === 0) return
+    dateFormatAndGroup(newWeather)
+  }, [newWeather])
+
   return (
     <div className='flex gap-2 w-full justify-between'>
-      {averageTemp &&
-        averageTemp.map((temp, index) => (
+      {grouped &&
+        Object.keys(grouped).map((day: any) => (
           <WeekDay
-            key={index}
-            temp={temp}
+            key={day}
+            day={day}
+            temp={grouped[day]}
           />
         ))}
     </div>
