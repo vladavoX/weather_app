@@ -81,6 +81,7 @@ function App() {
             location={location}
             setLocation={setLocation}
             fetchWeather={fetchWeather}
+            weather={weather}
           />
           <CentralView
             unit={unit}

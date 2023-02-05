@@ -5,9 +5,15 @@ interface Props {
   location: string
   setLocation: React.Dispatch<React.SetStateAction<string>>
   fetchWeather: () => Promise<void>
+  weather: any
 }
 
-const LeftSidebar = ({ location, setLocation, fetchWeather }: Props) => {
+const LeftSidebar = ({
+  location,
+  setLocation,
+  fetchWeather,
+  weather,
+}: Props) => {
   return (
     <div className='w-2/5 bg-gray-50 h-screen flex flex-col items-center p-14'>
       <Search
@@ -15,7 +21,7 @@ const LeftSidebar = ({ location, setLocation, fetchWeather }: Props) => {
         setLocation={setLocation}
         fetchWeather={fetchWeather}
       />
-      <WeatherTodayDetails />
+      <WeatherTodayDetails weather={weather} />
     </div>
   )
 }

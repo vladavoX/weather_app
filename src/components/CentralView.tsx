@@ -1,5 +1,4 @@
 import Header from './Header'
-import TodaysHighlights from './TodaysHighlights'
 import WeekDays from './WeekDays'
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 
 const CentralView = ({ unit, setUnit, weather, setWeather }: Props) => {
   return (
-    <div className='w-full h-screen p-14 flex flex-col gap-12'>
+    <div className='w-full h-screen p-14 flex flex-col'>
       <Header
         unit={unit}
         setUnit={setUnit}
@@ -20,7 +19,6 @@ const CentralView = ({ unit, setUnit, weather, setWeather }: Props) => {
         weather={weather}
         setWeather={setWeather}
       />
-      <TodaysHighlights />
     </div>
   )
 }

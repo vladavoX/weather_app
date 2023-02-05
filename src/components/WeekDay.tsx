@@ -6,10 +6,9 @@ interface Props {
 const WeekDay = ({ temp, day }: Props) => {
   ;``
   return (
-    <div className='bg-gray-50 flex flex-col items-center justify-center py-12 rounded-md w-full'>
-      <p className='text-gray-900 font-bold text-xl'>{day}</p>
-      <p>Icon</p>
-      <p className='text-gray-900 font-bold text-xl'>{temp}°</p>
+    <div className='flex flex-col items-center justify-center w-full gap-4'>
+      <p className='text-gray-900 text-5xl'>{temp}°</p>
+      <p className='text-gray-900 font-bold text-2xl'>{day}</p>
     </div>
   )
 }

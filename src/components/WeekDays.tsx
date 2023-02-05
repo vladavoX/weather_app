@@ -6,7 +6,7 @@ interface Props {
   setWeather: React.Dispatch<React.SetStateAction<any>>
 }
 
-const WeekDays = ({ weather, setWeather }: Props) => {
+const WeekDays = ({ weather }: Props) => {
   const [newWeather, setNewWeather] = useState([])
   const [grouped, setGrouped] = useState([])
 
@@ -14,7 +14,7 @@ const WeekDays = ({ weather, setWeather }: Props) => {
     newWeather.list.map((day: any) => {
       const date = day.dt_txt.split(' ')
       const dayOfWeek = new Date(date[0]).toLocaleString('en-us', {
-        weekday: 'short',
+        weekday: 'long',
       })
       day.dt_txt = dayOfWeek
     })
@@ -45,7 +45,7 @@ const WeekDays = ({ weather, setWeather }: Props) => {
   }, [newWeather])
 
   return (
-    <div className='flex gap-2 w-full justify-between'>
+    <div className='flex gap-2 w-full h-full justify-between items-center'>
       {grouped &&
         Object.keys(grouped).map((day: any) => (
           <WeekDay
