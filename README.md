@@ -1,7 +1,7 @@
 ### #50ProjectsChallenge
 
 ### Previous Project 03 ➡ https://github.com/vladavoX/tic_tac_toe_game<br />
-### Next Project 05 ➡ Soon!
+### Next Project 05 ➡ https://github.com/vladavoX/login_register
 
 # Project 04: Weather App
 
